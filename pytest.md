@@ -126,7 +126,23 @@ def test_send_message(reset_sqlite_db):
 
 > > Last thing we need to do is add fixture as a argument to test itself and we are done. 
 
+Let’s consider a minimal use case and assume that we have integration tests that require some created rows upon setup. The `PersonRepository` class is responsible for the creation of those rows:
 
+```python
+class PersonRepository:
+
+@db_session
+def create(self, name, age):
+	return Person(name=name, age=age)
+
+@db_session
+def get_by_name(self, name):
+	return list(select(p for p in Person if p.name == name))
+```
+
+We would like to have a common way to deliver rows to tests. Fixtures are here to help:
+
+Now, in order to use a fixture within a test, we input its name to the test function’s parameters. Pytest handles the rest:
 
 ### Skipping Tests
 
@@ -141,5 +157,5 @@ def test_connect_to_database():
 ```
 > > This shows very simple example of how you can skip a valid test based on some condition - in this case based on whether the PostgreSQL server is running on the machine or not. There are many more cool features in Pytest related to skipping or anticipating failures and they are very well documented [here](http://doc.pytest.org/en/latest/skipping.html), so I won't go into more detail here as it seems redundant to copy and paste existing content here. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI3OTkyNTcyXX0=
+eyJoaXN0b3J5IjpbMTgwOTk1NTQ0XX0=
 -->
