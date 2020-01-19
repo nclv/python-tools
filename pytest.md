@@ -142,20 +142,19 @@ def get_by_name(self, name):
 
 We would like to have a common way to deliver rows to tests. Fixtures are here to help:
 ```python
-@pytest.fixture
-def person():
-	return PersonRepository().create(name='Andrew', age=20)
+@pytest.fixture(params=["Andrew Who", "James Gross"])
+def person(request):
+	return PersonRepository().create(name=request.param, age=20)
 ```
 Now, in order to use a fixture within a test, we input its name to the test function’s parameters. Pytest handles the rest:
 ```python
 @pytest.mark.integration
-
 def test_person_repository_gets_the_person_by_name(person):
-retrieved_persons = PersonRepository().get_by_name(name=person.name)
-assert len((retrieved_persons)) == 1
-assert retrieved_persons[0].id == person.id
-assert retrieved_persons[0].name == person.name
-assert retrieved_persons[0].age == person.age
+	retrieved_persons = PersonRepository().get_by_name(name=person.name)
+	assert len((retrieved_persons)) == 1
+	assert retrieved_persons[0].id == person.id
+	assert retrieved_persons[0].name == person.name
+	assert retrieved_persons[0].age == person.age
 ```
 
 ### Skipping Tests
@@ -171,5 +170,5 @@ def test_connect_to_database():
 ```
 > > This shows very simple example of how you can skip a valid test based on some condition - in this case based on whether the PostgreSQL server is running on the machine or not. There are many more cool features in Pytest related to skipping or anticipating failures and they are very well documented [here](http://doc.pytest.org/en/latest/skipping.html), so I won't go into more detail here as it seems redundant to copy and paste existing content here. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTIzMTA4NjFdfQ==
+eyJoaXN0b3J5IjpbMTczMjk0NjkyMl19
 -->
