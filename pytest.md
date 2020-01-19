@@ -126,6 +126,8 @@ def test_send_message(reset_sqlite_db):
 
 > > Last thing we need to do is add fixture as a argument to test itself and we are done. 
 
+
+
 ### Skipping Tests
 
 > > There are situations, when it's reasonable to skip some tests, whether it's because of environment (Linux vs Windows), internet connection, availability of resources or other. So, how do we do that?
@@ -138,3 +140,6 @@ def test_connect_to_database():
     ... # Run function that tries to connect to PostgreSQL database
 ```
 > > This shows very simple example of how you can skip a valid test based on some condition - in this case based on whether the PostgreSQL server is running on the machine or not. There are many more cool features in Pytest related to skipping or anticipating failures and they are very well documented [here](http://doc.pytest.org/en/latest/skipping.html), so I won't go into more detail here as it seems redundant to copy and paste existing content here. 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbODI3OTkyNTcyXX0=
+-->
