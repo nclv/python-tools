@@ -130,11 +130,9 @@ These are the alternatives to using a Singleton in Python:
 
 ### Dependency Injection
 
-It deals with the question of when (or even better: where) the object is created. It’s created outside. Better to say that the objects are not created at all where we use them, so the dependency is not created where it is consumed. The consumer code receives the externally created object and uses it. For further reference, please read the most upvoted answer to this Stackoverflow question.
+It deals with the question of when (or even better: where) the object is created. It’s created outside. Better to say that the objects are not created at all where we use them, so the dependency is not created where it is consumed. The consumer code receives the externally created object and uses it.
 
-It’s a nice explanation of dependency injection and gives us a good idea of the potential of this particular technique. Basically the answer explains the problem with the following example: _Don’t get things to drink from the fridge yourself, state a need instead. Tell your parents that you need something to drink with lunch._
-
-Python offers us all we need to implement that easily. Think about its possible implementation in other languages such as Java and C#, and you’ll quickly realize the beauty of Python.
+_Don’t get things to drink from the fridge yourself, state a need instead. Tell your parents that you need something to drink with lunch._
 
 Let’s think about a simple example of dependency injection:
 
@@ -180,6 +178,6 @@ The dependency injection technique allows for very flexible and easy unit-testin
 ### Adapter
 ### Decorator
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxMDAzMzE0MiwzODcwOTg1MzcsLTQxMz
-g5MTYyN119
+eyJoaXN0b3J5IjpbMzgxNDM5Nzg1LDM4NzA5ODUzNywtNDEzOD
+kxNjI3XX0=
 -->
