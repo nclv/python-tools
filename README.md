@@ -75,9 +75,17 @@ J'utilise [```pytest```](pytest.md) pour tester mon code.
  * Working with IP Addresses
 
 # [Python Design Patterns](python-design-patterns.md)
-
+- Design patterns
 	- Program to an interface not an implementation
 	- Favor object composition over inheritance
+- Behavioral patterns
+	- Iterator
+	- Chain of Responsibility
+	- Command
+- Creational Patterns
+	- Singleton
+	- Dependency Injection
+- Structural Patten
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5NTE2ODkzNV19
+eyJoaXN0b3J5IjpbNzMwNTAzMzQ1XX0=
 -->
