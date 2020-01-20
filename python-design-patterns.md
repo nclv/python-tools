@@ -109,7 +109,7 @@ history.undo()
 ### Singleton
 The Singleton pattern is used when we want to guarantee that only one instance of a given class exists during runtime. Do we really need this pattern in Python? It’s easier to simply create one instance intentionally and then use it instead of implementing the Singleton pattern.
 
-But should you want to implement it, here is some good news: In Python, we can alter the instantiation process (along with virtually anything else). Remember the `__new__()` method I mentioned earlier? Here we go:
+But should you want to implement it, here is some good news: In Python, we can alter the instantiation process (along with virtually anything else).
 
 ```py
 class Logger(object):
@@ -127,12 +127,59 @@ These are the alternatives to using a Singleton in Python:
 -   Use a module.
 -   Create one instance somewhere at the top-level of your application, perhaps in the config file.
 -   Pass the instance to every object that needs it. That’s a dependency injection and it’s a powerful and easily mastered mechanism.
+
 ### Dependency Injection
+
+It deals with the question of when (or even better: where) the object is created. It’s created outside. Better to say that the objects are not created at all where we use them, so the dependency is not created where it is consumed. The consumer code receives the externally created object and uses it. For further reference, please read the most upvoted answer to this Stackoverflow question.
+
+It’s a nice explanation of dependency injection and gives us a good idea of the potential of this particular technique. Basically the answer explains the problem with the following example: _Don’t get things to drink from the fridge yourself, state a need instead. Tell your parents that you need something to drink with lunch._
+
+Python offers us all we need to implement that easily. Think about its possible implementation in other languages such as Java and C#, and you’ll quickly realize the beauty of Python.
+
+Let’s think about a simple example of dependency injection:
+
+```py
+class Command:
+
+    def __init__(self, authenticate=None, authorize=None):
+        self.authenticate = authenticate or self._not_authenticated
+        self.authorize = authorize or self._not_autorized
+
+    def execute(self, user, action):
+        self.authenticate(user)
+        self.authorize(user, action)
+        return action()
+
+if in_sudo_mode:
+    command = Command(always_authenticated, always_authorized)
+else:
+    command = Command(config.authenticate, config.authorize)
+command.execute(current_user, delete_user_action)
+
+```
+
+We inject the _authenticator_ and _authorizer_ methods in the Command class. All the Command class needs is to execute them successfully without bothering with the implementation details. This way, we may use the Command class with whatever authentication and authorization mechanisms we decide to use in runtime.
+
+We have shown how to inject dependencies through the constructor, but we can easily inject them by setting directly the object properties, unlocking even more potential:
+
+```py
+command = Command()
+
+if in_sudo_mode:
+    command.authenticate = always_authenticated
+    command.authorize = always_authorized
+else:
+    command.authenticate = config.authenticate
+    command.authorize = config.authorize
+command.execute(current_user, delete_user_action)
+
+```
+The dependency injection technique allows for very flexible and easy unit-testing. Imagine an architecture where you can change data storing on-the-fly. Mocking a database becomes a trivial task.
 ## Structural Patterns
 ### Facade
 ### Adapter
 ### Decorator
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2MzE3NTcwMSwzODcwOTg1MzcsLTQxMz
+eyJoaXN0b3J5IjpbLTgxMDAzMzE0MiwzODcwOTg1MzcsLTQxMz
 g5MTYyN119
 -->
