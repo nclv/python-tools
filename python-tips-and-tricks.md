@@ -1,3 +1,5 @@
+From [Awesome blog for tips and tricks](https://martinheinz.dev/)
+
 ### Sanitizing String Input
 
 > > Problem of sanitizing user input applies to almost every program you might write. Often it's enough to convert characters to lower or upper-case, sometimes you can use Regex to do the work, but for complex cases, there might be a better way:
@@ -318,3 +320,6 @@ ip in net
 # False
 ```
 > > There are plenty more interesting features that I will not go over as you can find those [here](https://docs.python.org/3/howto/ipaddress.html). Be aware though, that there is only a limited interoperability between ```ipaddress``` module and other network-related modules. For example, you can't use instances of ```IPv4Network``` as address strings - they need to be converted using ```str``` first. 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMjA4MTAyMzk2M119
+-->
