@@ -175,13 +175,7 @@ command.execute(current_user, delete_user_action)
 The dependency injection technique allows for very flexible and easy unit-testing. Imagine an architecture where you can change data storing on-the-fly. Mocking a database becomes a trivial task.
 ## Structural Patterns
 ### Facade
-This may very well be the most famous Python design pattern.
-
 Imagine you have a system with a considerable number of objects. Every object is offering a rich set of API methods. You can do a lot of things with this system, but how about simplifying the interface? Why not add an interface object exposing a well thought-out subset of all API methods? A _Facade!_
-
-![Facade is an elegant Python design pattern. It's a perfect way of streamlining the interface.](https://uploads.toptal.com/blog/image/126801/toptal-blog-image-1533728107288-9a9f20e7ad317bb61565c5e176327662.png)
-
-Facade is an elegant Python design pattern. It's a perfect way of streamlining the interface.
 
 Python Facade design pattern example:
 
@@ -202,10 +196,10 @@ class Car(object):
         return self._tank.level
 ```
 
-There is no surprise, no tricks, the `Car` class is a _Facade_, and that’s all.
+The `Car` class is a _Facade_, and that’s all.
 ### Adapter
 ### Decorator
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5NzY5ODIyNywzODcwOTg1MzcsLTQxMz
-g5MTYyN119
+eyJoaXN0b3J5IjpbLTEyNDYxNjg0MjYsMzg3MDk4NTM3LC00MT
+M4OTE2MjddfQ==
 -->
