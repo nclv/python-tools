@@ -85,7 +85,10 @@ J'utilise [```pytest```](pytest.md) pour tester mon code.
 - Creational Patterns
 	- Singleton
 	- Dependency Injection
-- Structural Patten
+- Structural Patterns
+	- Facade
+	- Adapter
+	- Decorator
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzMwNTAzMzQ1XX0=
+eyJoaXN0b3J5IjpbLTE0NzA1MDQ1NzFdfQ==
 -->
