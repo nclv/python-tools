@@ -198,8 +198,45 @@ class Car(object):
 
 The `Car` class is a _Facade_, and that’s all.
 ### Adapter
+If _Facades_ are used for interface simplification, _Adapters_ are all about altering the interface. Like using a cow when the system is expecting a duck.
+
+Let’s say you have a working method for logging information to a given destination. Your method expects the destination to have a `write()` method (as every file object has, for example).
+
+```py
+def log(message, destination):
+    destination.write('[{}] - {}'.format(datetime.now(), message))
+
+```
+
+I would say it is a well written method with dependency injection, which allows for great extensibility. Say you want to log to some UDP socket instead to a file,you know how to open this UDP socket but the only problem is that the `socket` object has no `write()` method. You need an _**Adapter**_!
+
+```py
+import socket
+
+class SocketWriter(object):
+
+    def __init__(self, ip, port):
+        self._socket = socket.socket(socket.AF_INET,
+                                     socket.SOCK_DGRAM)
+        self._ip = ip
+        self._port = port
+
+    def write(self, message):
+        self._socket.send(message, (self._ip, self._port))
+
+def log(message, destination):
+    destination.write('[{}] - {}'.format(datetime.now(), message))
+
+upd_logger = SocketWriter('1.2.3.4', '9999')
+log('Something happened', udp_destination)
+
+```
+
+But why do I find _adapter_ so important? Well, when it’s effectively combined with dependency injection, it gives us huge flexibility. Why alter our well-tested code to support new interfaces when we can just implement an adapter that will translate the new interface to the well known one?
+
+You should also check out and master _bridge_ and _proxy_ design patterns, due to their similarity to _adapter_. Think how easy they are to implement in Python, and think about different ways you could use them in your project.
 ### Decorator
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNDYxNjg0MjYsMzg3MDk4NTM3LC00MT
+eyJoaXN0b3J5IjpbLTE4NjcxNTMxMjYsMzg3MDk4NTM3LC00MT
 M4OTE2MjddfQ==
 -->
