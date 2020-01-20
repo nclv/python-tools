@@ -107,12 +107,32 @@ history.undo()
 ```
 ## Creational Patterns
 ### Singleton
+The Singleton pattern is used when we want to guarantee that only one instance of a given class exists during runtime. Do we really need this pattern in Python? It’s easier to simply create one instance intentionally and then use it instead of implementing the Singleton pattern.
+
+But should you want to implement it, here is some good news: In Python, we can alter the instantiation process (along with virtually anything else). Remember the `__new__()` method I mentioned earlier? Here we go:
+
+```py
+class Logger(object):
+    def __new__(cls, *args, **kwargs):
+        if not hasattr(cls, '_logger'):
+            cls._logger = super(Logger, cls
+                    ).__new__(cls, *args, **kwargs)
+        return cls._logger
+```
+
+In this example, _Logger_ is a Singleton.
+
+These are the alternatives to using a Singleton in Python:
+
+-   Use a module.
+-   Create one instance somewhere at the top-level of your application, perhaps in the config file.
+-   Pass the instance to every object that needs it. That’s a dependency injection and it’s a powerful and easily mastered mechanism.
 ### Dependency Injection
 ## Structural Patterns
 ### Facade
 ### Adapter
 ### Decorator
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1MTExMTY4MCwzODcwOTg1MzcsLTQxMz
+eyJoaXN0b3J5IjpbMTU2MzE3NTcwMSwzODcwOTg1MzcsLTQxMz
 g5MTYyN119
 -->
