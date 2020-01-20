@@ -76,10 +76,6 @@ J'utilise [```pytest```](pytest.md) pour tester mon code.
 
 # [Python Design Patterns](python-design-patterns.md)
 
-# Credits
-
-[Awesome blog for tips and tricks](https://martinheinz.dev/)
-[Python Design Patterns](https://www.toptal.com/python/python-design-patterns)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTYzMTExODQ0XX0=
+eyJoaXN0b3J5IjpbNjAwNzQ0Njc3XX0=
 -->
