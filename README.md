@@ -88,7 +88,10 @@ J'utilise [```pytest```](pytest.md) pour tester mon code.
 - Structural Patterns
 	- Facade
 	- Adapter
-	- Decorator
+	- DecoratorCredits
+
+[Awesome blog for tips and tricks](https://martinheinz.dev/)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzA1MDQ1NzFdfQ==
+eyJoaXN0b3J5IjpbLTE2MjQ2ODU0MDcsLTE0NzA1MDQ1NzFdfQ
+==
 -->
