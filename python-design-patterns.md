@@ -264,7 +264,7 @@ We can implement any authorization and authentication functionality in another p
 def execute(action, *args, **kwargs):
     return action()
 
-def autheticated_only(method):
+def authenticated_only(method):
     def decorated(*args, **kwargs):
         if check_authenticated(kwargs['user']):
             return method(*args, **kwargs)
@@ -295,7 +295,7 @@ Now the `execute()` method is:
 We write the same using Python’s integrated decorator syntax:
 
 ```py
-def autheticated_only(method):
+def authenticated_only(method):
     def decorated(*args, **kwargs):
         if check_authenticated(kwargs['user']):
             return method(*args, **kwargs )
@@ -322,6 +322,6 @@ def execute(action, *args, **kwargs):
 
 It is important to note that you are _not limited to functions_ as decorators. A decorator may involve entire classes. The only requirement is that they must be _callables_. But we have no problem with that; we just need to define the `__call__(self)` method.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjYwNjAyOCwzODcwOTg1MzcsLTQxMz
+eyJoaXN0b3J5IjpbLTY1MzY1MTkzMCwzODcwOTg1MzcsLTQxMz
 g5MTYyN119
 -->
