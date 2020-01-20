@@ -16,7 +16,32 @@ except AttributeError:
 Did we define an interface for our bird? No! Did we program to the interface instead of the implementation? Yes!
 
 ### Favor object composition over inheritance
+Instead of doing this:
+
+```py
+class User(DbObject):
+    pass
+
+```
+
+We can do something like this:
+
+```py
+class User:
+    _persist_methods = ['get', 'save', 'delete']
+
+    def __init__(self, persister):
+        self._persister = persister
+
+    def __getattr__(self, attribute):
+        if attribute in self._persist_methods:
+            return getattr(self._persister, attribute)
+
+```
+
+The advantages are obvious. We can restrict what methods of the wrapped class to expose. We can inject the persister instance in runtime! For example, today it’s a relational database, but tomorrow it could be whatever.
 ## Behavioral patterns
+Behavioural Patterns involve communication between objects, how objects interact and fulfil a given task. According to GOF principles, there are a total of 11 behavioral patterns in Python: _Chain of responsibility, Command, Interpreter, Iterator, Mediator, Memento, Observer, State, Strategy, Template, Visitor._
 ### Iterator
 ### Chain of Responsibility
 ### Command
@@ -28,5 +53,6 @@ Did we define an interface for our bird? No! Did we program to the interface ins
 ### Adapter
 ### Decorator
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzg3MDk4NTM3LC00MTM4OTE2MjddfQ==
+eyJoaXN0b3J5IjpbLTg4OTYzNTU0NiwzODcwOTg1MzcsLTQxMz
+g5MTYyN119
 -->
