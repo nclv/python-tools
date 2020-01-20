@@ -71,9 +71,8 @@ filter = ContentFilter([
 filtered_content = filter.filter(content)
 ```
 ### Command
-This is one of the first Python design patterns I implemented as a programmer. That reminds me: _Patterns are not invented, they are discovered_. They exist, we just need to find and put them to use. I discovered this one for an amazing project we implemented many years ago: a special purpose WYSIWYM XML editor. After using this pattern intensively in the code, I read more about it on some sites.
 
-The command pattern is handy in situations when, for some reason, we need to start by preparing what will be executed and then to execute it when needed. The advantage is that encapsulating actions in such a way enables [Python developers](https://www.toptal.com/python) to add additional functionalities related to the executed actions, such as undo/redo, or keeping a history of actions and the like.
+The command pattern is handy in situations when, for some reason, we need to start by preparing what will be executed and then to execute it when needed. The advantage is that encapsulating actions in such a way enables Python developers to add additional functionalities related to the executed actions, such as undo/redo, or keeping a history of actions and the like.
 
 Let’s see what a simple and frequently used example looks like:
 
@@ -114,6 +113,6 @@ history.undo()
 ### Adapter
 ### Decorator
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDY0MTkwOTMsMzg3MDk4NTM3LC00MT
-M4OTE2MjddfQ==
+eyJoaXN0b3J5IjpbMjA1MTExMTY4MCwzODcwOTg1MzcsLTQxMz
+g5MTYyN119
 -->
