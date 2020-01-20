@@ -76,6 +76,8 @@ J'utilise [```pytest```](pytest.md) pour tester mon code.
 
 # [Python Design Patterns](python-design-patterns.md)
 
+	- Program to an interface not an implementation
+	- Favor object composition over inheritance
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjAwNzQ0Njc3XX0=
+eyJoaXN0b3J5IjpbLTc5NTE2ODkzNV19
 -->
