@@ -197,8 +197,9 @@ class Car(object):
 ```
 
 The `Car` class is a _Facade_, and that’s all.
+
 ### Adapter
-If _Facades_ are used for interface simplification, _Adapters_ are all about altering the interface. Like using a cow when the system is expecting a duck.
+If _Facades_ are used for interface simplification, _Adapters_ are all about altering the interface.
 
 Let’s say you have a working method for logging information to a given destination. Your method expects the destination to have a `write()` method (as every file object has, for example).
 
@@ -234,9 +235,93 @@ log('Something happened', udp_destination)
 
 But why do I find _adapter_ so important? Well, when it’s effectively combined with dependency injection, it gives us huge flexibility. Why alter our well-tested code to support new interfaces when we can just implement an adapter that will translate the new interface to the well known one?
 
-You should also check out and master _bridge_ and _proxy_ design patterns, due to their similarity to _adapter_. Think how easy they are to implement in Python, and think about different ways you could use them in your project.
+You should also check out and master _bridge_ and _proxy_ design patterns, due to their similarity to _adapter_.
+
 ### Decorator
+The _decorator_ pattern is about introducing additional functionality and in particular, doing it without using inheritance.
+
+```py
+def execute(user, action):
+    self.authenticate(user)
+    self.authorize(user, action)
+    return action()
+
+```
+
+What is not so good here is that the `execute` function does much more than executing something. We are not following the single responsibility principle to the letter.
+
+It would be good to simply write just following:
+
+```py
+def execute(action):
+    return action()
+
+```
+
+We can implement any authorization and authentication functionality in another place, in a _decorator_, like so:
+
+```py
+def execute(action, *args, **kwargs):
+    return action()
+
+def autheticated_only(method):
+    def decorated(*args, **kwargs):
+        if check_authenticated(kwargs['user']):
+            return method(*args, **kwargs)
+        else:
+            raise UnauthenticatedError
+    return decorated
+
+def authorized_only(method):
+    def decorated(*args, **kwargs):
+        if check_authorized(kwargs['user'], kwargs['action']):
+            return method(*args, **kwargs)
+        else:
+            raise UnauthorizeddError
+    return decorated
+
+execute = authenticated_only(execute)
+execute = authorized_only(execute)
+
+```
+
+Now the `execute()` method is:
+
+-   Simple to read
+-   Does only one thing (at least when looking at the code)
+-   Is decorated with authentication
+-   Is decorated with authorization
+
+We write the same using Python’s integrated decorator syntax:
+
+```py
+def autheticated_only(method):
+    def decorated(*args, **kwargs):
+        if check_authenticated(kwargs['user']):
+            return method(*args, **kwargs )
+        else:
+            raise UnauthenticatedError
+    return decorated
+
+
+def authorized_only(method):
+    def decorated(*args, **kwargs):
+        if check_authorized(kwargs['user'], kwargs['action']):
+            return method(*args, **kwargs)
+        else:
+            raise UnauthorizedError
+    return decorated
+
+
+@authorized_only
+@authenticated_only
+def execute(action, *args, **kwargs):
+    return action()
+
+```
+
+It is important to note that you are _not limited to functions_ as decorators. A decorator may involve entire classes. The only requirement is that they must be _callables_. But we have no problem with that; we just need to define the `__call__(self)` method.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjcxNTMxMjYsMzg3MDk4NTM3LC00MT
-M4OTE2MjddfQ==
+eyJoaXN0b3J5IjpbLTE0NjYwNjAyOCwzODcwOTg1MzcsLTQxMz
+g5MTYyN119
 -->
