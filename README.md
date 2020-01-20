@@ -74,6 +74,12 @@ J'utilise [```pytest```](pytest.md) pour tester mon code.
  * Controlling What Can Be Imported and What Not
  * Working with IP Addresses
 
+# [Python Design Patterns](python-design-patterns.md)
+
 # Credits
 
 [Awesome blog for tips and tricks](https://martinheinz.dev/)
+[Python Design Patterns](https://www.toptal.com/python/python-design-patterns)
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNTYzMTExODQ0XX0=
+-->
