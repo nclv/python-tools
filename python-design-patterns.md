@@ -6,8 +6,6 @@ _Factory_ is a structural Python design pattern aimed at creating new objects, h
 ### Program to an interface not an implementation
 We don’t bother with the nature of the object, we don’t have to care what the object is; we just want to know if it’s able to do what we need (we are only interested in the interface of the object).
 
-Can the object quack? So, let it quack!
-
 ```py
 try:
     bird.quack()
@@ -15,19 +13,20 @@ except AttributeError:
     self.lol()
 ```
 
-Did we define an interface for our duck? No! Did we program to the interface instead of the implementation? Yes! And, I find this so nice.
+Did we define an interface for our bird? No! Did we program to the interface instead of the implementation? Yes!
+
 ### Favor object composition over inheritance
-- Behavioral patterns
-	- Iterator
-	- Chain of Responsibility
-	- Command
-- Creational Patterns
-	- Singleton
-	- Dependency Injection
-- Structural Patterns
-	- Facade
-	- Adapter
-	- Decorator
+## Behavioral patterns
+### Iterator
+### Chain of Responsibility
+### Command
+## Creational Patterns
+### Singleton
+### Dependency Injection
+## Structural Patterns
+### Facade
+### Adapter
+### Decorator
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzY0Mjg2NTIsLTQxMzg5MTYyN119
+eyJoaXN0b3J5IjpbMzg3MDk4NTM3LC00MTM4OTE2MjddfQ==
 -->
