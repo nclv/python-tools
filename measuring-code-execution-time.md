@@ -1,4 +1,4 @@
-From 
+From <https://knasmueller.net/measure-code-execution-time-accurately-in-python>.
 ## Systematic and Random Errors
 
 So what is wrong with the following way of measuring?
@@ -14,5 +14,5 @@ Second, there is a **random error**: the execution time of the call to `my_funct
 
 We can combat the random error by just *performing multiple measurements and taking the average of those*. However, it is much more challenging to remove the systematic error.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzMTQzNzkyOV19
+eyJoaXN0b3J5IjpbLTE3MDk1MTI4MDFdfQ==
 -->
