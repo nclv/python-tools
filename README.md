@@ -47,7 +47,7 @@ def function(*args):
 print('{0:<10} {1:<8} {2:^8}'.format('module', 'function', 'time'))
 ```
 
-> > Time package provides time.perf_counter and time.process_time. The difference here is that perf_counter returns absolute value, which includes time when your Python program process is not running, therefore it might be impacted by machine load. On the other hand process_time returns only user time (excluding system time), which is only the time of your process.
+> Time package provides time.perf_counter and time.process_time. The difference here is that perf_counter returns absolute value, which includes time when your Python program process is not running, therefore it might be impacted by machine load. On the other hand process_time returns only user time (excluding system time), which is only the time of your process.
 
 See more [timing tips](timing-tips.md). (Memoization, Locals, Imports, Generators)
 
@@ -92,6 +92,6 @@ J'utilise [```pytest```](pytest.md) pour tester mon code.
 
 [Awesome blog for tips and tricks](https://martinheinz.dev/)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjQ2ODU0MDcsLTE0NzA1MDQ1NzFdfQ
-==
+eyJoaXN0b3J5IjpbLTM5NDI3ODMzNywtMTYyNDY4NTQwNywtMT
+Q3MDUwNDU3MV19
 -->
