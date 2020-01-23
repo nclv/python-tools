@@ -15,7 +15,11 @@ Second, there is a **random error**: the execution time of the call to `my_funct
 We can combat the random error by just *performing multiple measurements and taking the average of those*. 
 
 However, it is much more challenging to remove the systematic error.
+
 **The idea is to first measure the time of _one_ function call, then the time of _two_, then the time of three, and so on....**
+You can then fit a straight line through the measurements. The overall execution time can then be obtained by taking the slope `a` from the straight line `y = a x + b`. 
+This type of measurement is very robust against occasional measurements with large errors. This can be visualized by artificially changing one measurement and rerunning the line fitting process.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5OTk3MDgyNywtMTcwOTUxMjgwMV19
+eyJoaXN0b3J5IjpbLTE1Nzk0NjU0MTAsLTE3MDk1MTI4MDFdfQ
+==
 -->
