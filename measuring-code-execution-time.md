@@ -12,7 +12,10 @@ First, there is a **systematic error**: by invoking `time.perf_counter()`, an un
 
 Second, there is a **random error**: the execution time of the call to `my_function()` will vary to a certain degree.
 
-We can combat the random error by just *performing multiple measurements and taking the average of those*. However, it is much more challenging to remove the systematic error.
+We can combat the random error by just *performing multiple measurements and taking the average of those*. 
+
+However, it is much more challenging to remove the systematic error.
+**The idea is to first measure the time of _one_ function call, then the time of _two_, then the time of three, and so on....**
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDk1MTI4MDFdfQ==
+eyJoaXN0b3J5IjpbMTY5OTk3MDgyNywtMTcwOTUxMjgwMV19
 -->
