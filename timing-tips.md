@@ -15,7 +15,7 @@ slow_func(1)  # already cached - result returned instantaneously!
 
 slow_func(3)  # ... waiting for 2 sec before getting result
 ```
-Anoather example :
+Another example :
 ```python
 from functools import lru_cache
 import requests
@@ -90,5 +90,5 @@ def fast_func():
 > >  Generators are not inherently faster as they were made to allow for lazy computation, which saves memory rather than time. However, the saved memory can be cause for your program to actually run faster. How? Well, if you have large dataset and you don't use generators (iterators), then the data might overflow CPUs L1 cache, which will slow down lookup of values in memory significantly.
 When it comes to performance, it's very import that CPU can save all the data it's working on, as close as possible, which is in the cache.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTk1MzE5MTksLTUyMzg1ODE1OF19
+eyJoaXN0b3J5IjpbLTk3NDI3MjMwMiwtNTIzODU4MTU4XX0=
 -->
