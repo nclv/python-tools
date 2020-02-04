@@ -233,17 +233,17 @@ def set_max_memory(size):
     soft, hard = resource.getrlimit(resource.RLIMIT_AS)
     resource.setrlimit(resource.RLIMIT_AS, (size, hard))
 ```
-> > Here we can see both options to set maximum CPU runtime as well as maximum memory used limit. For CPU limit we first get soft and hard limit for that specific resource (```RLIMIT_CPU```) and then set it using number of seconds specified by argument and previously retrieved hard limit. Finally, we register signal that causes system exit if CPU time is exceeded. As for the memory, we again retrieve soft and hard limit and set it using ```setrlimit``` with size argument and retrieved hard limit. 
+> Here we can see both options to set maximum CPU runtime as well as maximum memory used limit. For CPU limit we first get soft and hard limit for that specific resource (```RLIMIT_CPU```) and then set it using number of seconds specified by argument and previously retrieved hard limit. Finally, we register signal that causes system exit if CPU time is exceeded. As for the memory, we again retrieve soft and hard limit and set it using ```setrlimit``` with size argument and retrieved hard limit. 
 
 ### Debugging Program Crashes in Shell
-> > If you are one of the people who refuse to use IDE and are coding in Vim or Emacs, then you probably got into a situation where having debugger like in IDE would be useful. And you know what? You have one - just run your program with ```python3.8 -i``` - the ```-i``` launches interactive shell as soon as your program terminates and from there you can explore all variables and call functions. Neat, but how about actual debugger (```pdb```)? Let's use following program (```script.py```):
+> If you are one of the people who refuse to use IDE and are coding in Vim or Emacs, then you probably got into a situation where having debugger like in IDE would be useful. And you know what? You have one - just run your program with ```python3.8 -i``` - the ```-i``` launches interactive shell as soon as your program terminates and from there you can explore all variables and call functions. Neat, but how about actual debugger (```pdb```)? Let's use following program (```script.py```):
 ```python
 def func():
     return 0 / 0
 
 func()
 ```
-> > And run script with ```python3.8 -i script.py```
+> And run script with ```python3.8 -i script.py```
 ```sh
 # Script crashes...
 Traceback (most recent call last):
@@ -258,7 +258,7 @@ ZeroDivisionError: division by zero
 -> return 0 / 0
 (Pdb)
 ```
-> > We see where we crashed, now let's set a breakpoint:
+> We see where we crashed, now let's set a breakpoint:
 ```python
 def func():
     breakpoint()  # import pdb; pdb.set_trace()
@@ -266,7 +266,7 @@ def func():
 
 func()
 ```
-> > Now run it again:
+> Now run it again:
 ```sh
 script.py(3)func()
 -> return 0 / 0
@@ -277,10 +277,10 @@ ZeroDivisionError: division by zero
 -> return 0 / 0
 (Pdb)
 ```
-> > Most of the time print statements and tracebacks are enough for debugging, but sometimes, you need to start poking around to get sense of what's happening inside your program. In these cases you can set breakpoint(s) and when you run the program, the execution will stop on the line of breakpoint and you can examine your program, e.g. list function args, evaluate expression, list variables or just step through as shown above. ```pdb``` is fully featured python shell so you can execute literary anything, but you will need some of the debugger commands which you can find [here](https://docs.python.org/3/library/pdb.html#debugger-commands). 
+> Most of the time print statements and tracebacks are enough for debugging, but sometimes, you need to start poking around to get sense of what's happening inside your program. In these cases you can set breakpoint(s) and when you run the program, the execution will stop on the line of breakpoint and you can examine your program, e.g. list function args, evaluate expression, list variables or just step through as shown above. ```pdb``` is fully featured python shell so you can execute literary anything, but you will need some of the debugger commands which you can find [here](https://docs.python.org/3/library/pdb.html#debugger-commands). 
 
 ### Controlling What Can Be Imported and What Not
-> > Some languages have very obvious mechanism for exporting members (variables, methods, interfaces) such as Golang, where only members starting with upper-case letter are exported. In Python on the other hand, everything is exported, unless we use ```__all__```:
+> Some languages have very obvious mechanism for exporting members (variables, methods, interfaces) such as Golang, where only members starting with upper-case letter are exported. In Python on the other hand, everything is exported, unless we use ```__all__```:
 ```python
 def foo():
     pass
@@ -290,10 +290,10 @@ def bar():
 
 __all__ = ["bar"]
 ```
-> > Based on code snippet above, we know that only ```bar``` function will be exported. Also, we can leave ```__all__``` empty and nothing will be exported casing ```AttributeError``` when importing from this module.
+> Based on code snippet above, we know that only ```bar``` function will be exported. Also, we can leave ```__all__``` empty and nothing will be exported casing ```AttributeError``` when importing from this module.
 
 ### Working with IP Addresses
-> > If you have to do some networking in Python you might find ```ipaddress``` module very useful. One use-case would be generating list of ip addresses from CIDR (Classless Inter-Domain Routing):
+> If you have to do some networking in Python you might find ```ipaddress``` module very useful. One use-case would be generating list of ip addresses from CIDR (Classless Inter-Domain Routing):
 ```python
 import ipaddress
 net = ipaddress.ip_network('74.125.227.0/29')  # Works for IPv6 too
@@ -308,7 +308,7 @@ for addr in net:
 # 74.125.227.3
 # ...
 ```
-> > Another nice feature is a network membership check of IP address:
+> Another nice feature is a network membership check of IP address:
 ```python
 ip = ipaddress.ip_address("74.125.227.3")
 
@@ -319,7 +319,7 @@ ip = ipaddress.ip_address("74.125.227.12")
 ip in net
 # False
 ```
-> > There are plenty more interesting features that I will not go over as you can find those [here](https://docs.python.org/3/howto/ipaddress.html). Be aware though, that there is only a limited interoperability between ```ipaddress``` module and other network-related modules. For example, you can't use instances of ```IPv4Network``` as address strings - they need to be converted using ```str``` first. 
+> There are plenty more interesting features that I will not go over as you can find those [here](https://docs.python.org/3/howto/ipaddress.html). Be aware though, that there is only a limited interoperability between ```ipaddress``` module and other network-related modules. For example, you can't use instances of ```IPv4Network``` as address strings - they need to be converted using ```str``` first. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1NjE5NTUwOV19
+eyJoaXN0b3J5IjpbODgwNTk5NjM5LDIwNTYxOTU1MDldfQ==
 -->
