@@ -2,7 +2,7 @@ From [Awesome blog for tips and tricks](https://martinheinz.dev/)
 
 ### Sanitizing String Input
 
-> > Problem of sanitizing user input applies to almost every program you might write. Often it's enough to convert characters to lower or upper-case, sometimes you can use Regex to do the work, but for complex cases, there might be a better way:
+> Problem of sanitizing user input applies to almost every program you might write. Often it's enough to convert characters to lower or upper-case, sometimes you can use Regex to do the work, but for complex cases, there might be a better way:
 ```python
 user_input = "This\nstring has\tsome whitespaces...\r\n"
 
@@ -13,19 +13,19 @@ character_map = {
 }
 user_input.translate(character_map)  # This string has some whitespaces... "
 ```
-> > In this example you can see that whitespace characters "\n" and "\t" have been replaced by single space and "\r" has been removed completely. This is a simple example, but we could take it much further and generate big remapping tables using ```unicodedata``` package and its ```combining()``` function to generate and map which we could use to remove all accents from string.
+> In this example you can see that whitespace characters "\n" and "\t" have been replaced by single space and "\r" has been removed completely. This is a simple example, but we could take it much further and generate big remapping tables using ```unicodedata``` package and its ```combining()``` function to generate and map which we could use to remove all accents from string.
 
 ### Find Close Matches of a Word/String
-> > Now, for little more obscure feature of Python standard library. If you ever find yourself is situation where you need to find words similar to some input string using something like Levenshtein distance, then Python and ```difflib``` have your back.
+> Now, for little more obscure feature of Python standard library. If you ever find yourself is situation where you need to find words similar to some input string using something like Levenshtein distance, then Python and ```difflib``` have your back.
 ```python
 import difflib
 difflib.get_close_matches('appel', ['ape', 'apple', 'peach', 'puppy'], n=2)
 # returns ['apple', 'ape']
 ```
-> > ```difflib.get_close_matches``` finds the best "good enough" matches. Here, first argument is being matched against second one. We can also supply optional argument ```n``` which specifies maximum number of matches to be returned. Another available keyword argument ```cutoff``` (defaults to 0.6) can be set to change threshold for score of matched strings. 
+> ```difflib.get_close_matches``` finds the best "good enough" matches. Here, first argument is being matched against second one. We can also supply optional argument ```n``` which specifies maximum number of matches to be returned. Another available keyword argument ```cutoff``` (defaults to 0.6) can be set to change threshold for score of matched strings. 
 
 ### Prompting User for a Password at Runtime
-> > Lots of commandline tools or scripts require username and password to operate. So, if you happen to write such program you might find ```getpass``` module useful:
+> Lots of commandline tools or scripts require username and password to operate. So, if you happen to write such program you might find ```getpass``` module useful:
 ```python
 import getpass
 
@@ -33,10 +33,10 @@ user = getpass.getuser()
 password = getpass.getpass()
 # Do Stuff...
 ```
-> > This very simple package allows you to prompt user for password as well as get their username, by extracting current users login name. Be aware though, that not every system supports hiding of passwords. Python will try to warn you about that, so just read warnings in command line. 
+> This very simple package allows you to prompt user for password as well as get their username, by extracting current users login name. Be aware though, that not every system supports hiding of passwords. Python will try to warn you about that, so just read warnings in command line. 
 
 ### Taking Slice of an Iterator
-> > If you try to take slice of an Iterator, you will get a ```TypeError```, stating that generator object is not subscriptable, but there is a easy solution to that:
+> If you try to take slice of an Iterator, you will get a ```TypeError```, stating that generator object is not subscriptable, but there is a easy solution to that:
 ```python
 import itertools
 
@@ -44,10 +44,10 @@ s = itertools.islice(range(50), 10, 20)  # <itertools.islice object at 0x7f70fab
 for val in s:
     ...
 ```
-> > Using ```itertools.islice``` we can create a ```islice``` object which is an iterator that produces desired items. It's important to note though, that this consumes all generator items up until the start of slice and also all the items in our ```islice``` object.
+> Using ```itertools.islice``` we can create a ```islice``` object which is an iterator that produces desired items. It's important to note though, that this consumes all generator items up until the start of slice and also all the items in our ```islice``` object.
 
 ### Naming a Slice Using ```slice``` Function
-> > Using lots of hardcoded index values can quickly become maintenance and readability mess. One option would be to use constants for all index values, but we can do better:
+> Using lots of hardcoded index values can quickly become maintenance and readability mess. One option would be to use constants for all index values, but we can do better:
 ```python
 #              ID    First Name     Last Name
 line_record = "2        John         Smith"
@@ -59,10 +59,10 @@ LAST_NAME = slice(22, 27)
 name = f"{line_record[FIRST_NAME].strip()} {line_record[LAST_NAME].strip()}"
 # name == "John Smith"
 ```
-> > In this example we can see that we can avoid mysterious indices, by first naming them using ```slice``` function and then using them when slicing out part of string. You can also get more information about the slice object using its attributes ```.start```, ```.stop``` and ```.step```.
+> In this example we can see that we can avoid mysterious indices, by first naming them using ```slice``` function and then using them when slicing out part of string. You can also get more information about the slice object using its attributes ```.start```, ```.stop``` and ```.step```.
 
 ### Skipping Begining of Iterable
-> > Sometimes you have to work with files which you know that start with variable number of unwanted lines such as comments. ```itertools``` again provides easy solution to that:
+> Sometimes you have to work with files which you know that start with variable number of unwanted lines such as comments. ```itertools``` again provides easy solution to that:
 ```python
 string_from_file = """
 // Author: ...
@@ -79,10 +79,10 @@ for line in itertools.dropwhile(lambda line: line.startswith("//"), string_from_
     print(line)
 ```
 
-> > This code snippet produces only lines after initial comment section. This approach can be useful in case we only want to discard items (lines in this instance) at the beginning of the iterable and don't know how many of them there are.
+> This code snippet produces only lines after initial comment section. This approach can be useful in case we only want to discard items (lines in this instance) at the beginning of the iterable and don't know how many of them there are.
 
 ### Find the Most Frequently Occurring Items in a Iterable
-> > Finding the most common items in list is pretty common task, which you could do using ```for``` cycle and dictionary (map), but that would be a waste of time as there is ```Counter``` class in ```collections``` module:
+> Finding the most common items in list is pretty common task, which you could do using ```for``` cycle and dictionary (map), but that would be a waste of time as there is ```Counter``` class in ```collections``` module:
 ```python
 from collections import Counter
 
@@ -94,7 +94,7 @@ cheese_count = Counter(cheese)
 print(cheese_count.most_common(3))
 # Prints: [('parmesan', 4), ('cheddar', 3), ('gouda', 2)]
 ```
-> > Under the hood, ```Counter``` is just a dictionary that maps items to number of occurrences, therefore you can use it as normal ```dict```:
+> Under the hood, ```Counter``` is just a dictionary that maps items to number of occurrences, therefore you can use it as normal ```dict```:
 ```python
 print(cheese_count["mozzarella"])
 # Prints: 1
@@ -104,10 +104,10 @@ cheese_count["mozzarella"] += 1
 print(cheese_count["mozzarella"])
 # Prints: 2
 ```
-> > Besides that you can also use ```update(more_words)``` method to easily add more elements to counter. Another cool feature of ```Counter``` is that you can use mathematical operations (addition and subtraction) to combine and subtract instances of ```Counter```. 
+> Besides that you can also use ```update(more_words)``` method to easily add more elements to counter. Another cool feature of ```Counter``` is that you can use mathematical operations (addition and subtraction) to combine and subtract instances of ```Counter```. 
 
 ### Functions with only Keyword Arguments (kwargs)
-> > It can be helpful to create function that only takes keyword arguments to provide (force) more clarity when using such function:
+> It can be helpful to create function that only takes keyword arguments to provide (force) more clarity when using such function:
 ```python
 def test(*, a, b):
     pass
@@ -116,10 +116,10 @@ test("value for a", "value for b")  # TypeError: test() takes 0 positional argum
 test(a="value", b="value 2")  # Works...
 ```
 
-> > As you can see this can be easily solved by placing single ```*``` argument before keyword arguments. There can obviously be positional arguments if we place them before the ```*``` argument.
+> As you can see this can be easily solved by placing single ```*``` argument before keyword arguments. There can obviously be positional arguments if we place them before the ```*``` argument.
 
 ### Creating Object That Supports with Statements
-> > We all know how to, for example open file or maybe acquire locks using with statement, but can we actually implement our own? Yes, we can implement context-manager protocol using ```__enter__``` and ```__exit__``` methods:
+> We all know how to, for example open file or maybe acquire locks using with statement, but can we actually implement our own? Yes, we can implement context-manager protocol using ```__enter__``` and ```__exit__``` methods:
 ```python
 class Connection:
     def __init__(self):
@@ -137,7 +137,7 @@ with Connection() as c:
     # conn.__exit__() executes
 ```
 
-> > This is the most common way to implement context management in Python, but there is easier way to do it:
+> This is the most common way to implement context management in Python, but there is easier way to do it:
 ```python
 from contextlib import contextmanager
 
@@ -151,10 +151,10 @@ with tag("h1"):
     print("This is Title.")
 ```
 
-> > The snippet above implements the content management protocol using ```contextmanager``` manager decorator. The first part of the ```tag``` function (before ```yield```) is executed when entering the ```with``` block, then the block is executed and finally rest of the ```tag``` function is executed.
+> The snippet above implements the content management protocol using ```contextmanager``` manager decorator. The first part of the ```tag``` function (before ```yield```) is executed when entering the ```with``` block, then the block is executed and finally rest of the ```tag``` function is executed.
 
 ### Comparison Operators the Easy Way
-> > It can be pretty annoying to implement all the comparison operators for one class, considering there are quite a few of them - ```__lt__``` , ```__le__``` , ```__gt__``` , or ```__ge__```. But what if there was an easier way to do it? ```functools.total_ordering``` to the rescue:
+> It can be pretty annoying to implement all the comparison operators for one class, considering there are quite a few of them - ```__lt__``` , ```__le__``` , ```__gt__``` , or ```__ge__```. But what if there was an easier way to do it? ```functools.total_ordering``` to the rescue:
 ```python
 from functools import total_ordering
 
@@ -174,10 +174,10 @@ print(Number(1) < Number(5))
 print(Number(15) >= Number(15))
 print(Number(10) <= Number(2))
 ```
-> > How does this actually work? ```total_ordering``` decorator is used to simplify the process of implementing ordering of instances for our class. It's only needed to define ```__lt__``` and ```__eq__```, which is the minimum needed for mapping of remaining operations and that's the job of decorator - it fills the gaps for us.
+> How does this actually work? ```total_ordering``` decorator is used to simplify the process of implementing ordering of instances for our class. It's only needed to define ```__lt__``` and ```__eq__```, which is the minimum needed for mapping of remaining operations and that's the job of decorator - it fills the gaps for us.
 
 ### Saving Memory with __slots__
-> > If you ever wrote a program that was creating really big number of instances of some class, you might have noticed that your program suddenly needed a lot of memory. That is because Python uses dictionaries to represent attributes of instances of classes, which makes it fast but not very memory efficient, which is usually not a problem. However, if it becomes a problem for your program you might try using ```__slots__```:
+> If you ever wrote a program that was creating really big number of instances of some class, you might have noticed that your program suddenly needed a lot of memory. That is because Python uses dictionaries to represent attributes of instances of classes, which makes it fast but not very memory efficient, which is usually not a problem. However, if it becomes a problem for your program you might try using ```__slots__```:
 ```python
 class Person:
     __slots__ = ["first_name", "last_name", "phone"]
@@ -186,10 +186,10 @@ class Person:
         self.last_name = last_name
         self.phone = phone
 ```
-> > What happens here is that when we define ```__slots__``` attribute, Python uses small fixed-size array for the attributes instead of dictionary, which greatly reduces memory needed for each instance. There are also some downsides to using ```__slots__``` - we can't declare any new attributes and we are restricted to using ones on ```__slots__```. Also classes with ```__slots__``` can't use multiple inheritance.
+> What happens here is that when we define ```__slots__``` attribute, Python uses small fixed-size array for the attributes instead of dictionary, which greatly reduces memory needed for each instance. There are also some downsides to using ```__slots__``` - we can't declare any new attributes and we are restricted to using ones on ```__slots__```. Also classes with ```__slots__``` can't use multiple inheritance.
 
 ### Defining Multiple Constructors in a Class
-> > One feature that is very common in programming languages, but not in Python, is function overloading. Even though you can't overload normal functions, you can still (kinda) overload constructors using class methods:
+> One feature that is very common in programming languages, but not in Python, is function overloading. Even though you can't overload normal functions, you can still (kinda) overload constructors using class methods:
 ```python
 import datetime
 
@@ -321,5 +321,5 @@ ip in net
 ```
 > > There are plenty more interesting features that I will not go over as you can find those [here](https://docs.python.org/3/howto/ipaddress.html). Be aware though, that there is only a limited interoperability between ```ipaddress``` module and other network-related modules. For example, you can't use instances of ```IPv4Network``` as address strings - they need to be converted using ```str``` first. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4MTAyMzk2M119
+eyJoaXN0b3J5IjpbLTExNDY1NzY5NjddfQ==
 -->
