@@ -208,10 +208,10 @@ d = Date.today()
 print(f"{d.day}/{d.month}/{d.year}")
 # 14/9/2019
 ```
-> > You might be inclined to put all the logic of alternate constructors into ```__init__``` and solve it using ```*args```, ```**kwargs``` and bunch of ```if``` statements instead of using class methods. That could work, but it can become hard to read and hard to maintain. I would therefore recommend to put very little logic into ```__init__``` and perform all the operations in separate methods/constructors. This way you will get code that is clean and clear both for the maintainer and user of the class. 
+> You might be inclined to put all the logic of alternate constructors into ```__init__``` and solve it using ```*args```, ```**kwargs``` and bunch of ```if``` statements instead of using class methods. That could work, but it can become hard to read and hard to maintain. I would therefore recommend to put very little logic into ```__init__``` and perform all the operations in separate methods/constructors. This way you will get code that is clean and clear both for the maintainer and user of the class. 
 
 ### Limiting CPU and Memory Usage
-> > If instead of optimizing your program memory or CPU usage, you want to just straight up limit it to some hard number, then Python has a library for that too:
+> If instead of optimizing your program memory or CPU usage, you want to just straight up limit it to some hard number, then Python has a library for that too:
 ```python
 import signal
 import resource
@@ -321,5 +321,5 @@ ip in net
 ```
 > > There are plenty more interesting features that I will not go over as you can find those [here](https://docs.python.org/3/howto/ipaddress.html). Be aware though, that there is only a limited interoperability between ```ipaddress``` module and other network-related modules. For example, you can't use instances of ```IPv4Network``` as address strings - they need to be converted using ```str``` first. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDY1NzY5NjddfQ==
+eyJoaXN0b3J5IjpbMjA1NjE5NTUwOV19
 -->
