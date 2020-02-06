@@ -19,7 +19,7 @@ To install the kernel for jupyter notebooks run
 python -m ipykernel install --user --name=my-virtualenv-name
 ```
 
-
+# Editor
 To run atom with pipenv use
 ```sh
 pipenv install 'python-language-server[all]'
