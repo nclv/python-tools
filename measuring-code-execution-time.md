@@ -19,7 +19,10 @@ However, it is much more challenging to remove the systematic error.
 **The idea is to first measure the time of _one_ function call, then the time of _two_, then the time of three, and so on....**
 You can then fit a straight line through the measurements. The overall execution time can then be obtained by taking the slope `a` from the straight line `y = a x + b`. 
 This type of measurement is very robust against occasional measurements with large errors. This can be visualized by artificially changing one measurement and rerunning the line fitting process.
+
+## Code Samples
+Gist [bench.py](https://gist.github.com/NicovincX2/58bf32e1555a1f617191ea578a5ec6d3)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1Nzk0NjU0MTAsLTE3MDk1MTI4MDFdfQ
-==
+eyJoaXN0b3J5IjpbLTE4NDM4MDM0OTMsLTE1Nzk0NjU0MTAsLT
+E3MDk1MTI4MDFdfQ==
 -->
