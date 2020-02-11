@@ -21,8 +21,9 @@ You can then fit a straight line through the measurements. The overall execution
 This type of measurement is very robust against occasional measurements with large errors. This can be visualized by artificially changing one measurement and rerunning the line fitting process.
 
 ## Code Samples
-Gist [bench.py](https://gist.github.com/NicovincX2/58bf32e1555a1f617191ea578a5ec6d3)
+Gist [bench.py](https://gist.github.com/NicovincX2/58bf32e1555a1f617191ea578a5ec6d3) (ENSIMAG)
+Gist [performances.sh](https://gist.github.com/NicovincX2/db19132ba82a408b424f5465aacb6e8d
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDM4MDM0OTMsLTE1Nzk0NjU0MTAsLT
+eyJoaXN0b3J5IjpbLTExMDM5MTg0OTIsLTE1Nzk0NjU0MTAsLT
 E3MDk1MTI4MDFdfQ==
 -->
