@@ -23,7 +23,4 @@ This type of measurement is very robust against occasional measurements with lar
 ## Code Samples
 Gist [bench.py](https://gist.github.com/NicovincX2/58bf32e1555a1f617191ea578a5ec6d3) (ENSIMAG)
 Gist [performances.sh](https://gist.github.com/NicovincX2/db19132ba82a408b424f5465aacb6e8d) (cProfile and snakeviz)
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQ0OTU1MzkyLC0xNTc5NDY1NDEwLC0xNz
-A5NTEyODAxXX0=
--->
+Gist [empirical_complexity.py](https://gist.github.com/NicovincX2/5a0b282832283c300e134fba0174b0b2)
